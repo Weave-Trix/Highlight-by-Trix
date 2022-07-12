@@ -1,6 +1,6 @@
 "use strict";
 
-(() => { // Restrict the scope of the variables to this file
+(() => { // Restrict the scope of the variables to this file\
     const highlights = document.getElementsByClassName('highlighter--highlighted');
 
     const textToCopy = new Map(); // Use a Map instead of an object since it retains order of insertion

@@ -1,14 +1,13 @@
 {
-    "manifest_version": 3,
-    "name": "Highlighter",
+    "manifest_version": 2,
+    "name": "Highlight by Trix",
     "description": "Highlight text on websites with a simple right-click or keyboard shortcut. Saves highlights on your device.",
     "version": "4.0.3",
     "icons": {
-        "16": "images/16.png",
         "48": "images/48.png",
         "128": "images/128.png"
     },
-    "action": {
+    "browser_action": {
         "default_icon": {
             "16": "images/16.png",
             "48": "images/48.png",
@@ -22,7 +21,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "lib/jquery-2.1.3.min.js",
+                "lib/jquery-3.6.0.js",
                 "src/utils/storageManager.js",
                 "src/utils/highlight.js",
                 "src/utils/highlightV3.js",
@@ -40,57 +39,35 @@
         }
     ],
     "background": {
-        "service_worker": "background.js",
-        "type": "module"
+        "page": "background.html",
+        "persistent": false
     },
     "commands": {
         "execute-highlight": {
             "suggested_key": {
-                "default": "Alt+H",
-                "mac": "MacCtrl+H"
+                "default": "Alt+A",
+                "mac": "Alt+A"
             },
             "description": "Highlight selected text"
-        },
-        "toggle-highlighter-cursor": {
-            "description": "Toggle the highlighter cursor"
-        },
-        "change-color-to-yellow": {
-            "description": "Change highlighter color to yellow"
-        },
-        "change-color-to-cyan": {
-            "description": "Change highlighter color to blue"
-        },
-        "change-color-to-lime": {
-            "description": "Change highlighter color to green"
-        },
-        "change-color-to-magenta": {
-            "description": "Change highlighter color to pink"
-        },
-        "change-color-to-dark": {
-            "description": "Change highlighter color to dark"
         }
     },
     "permissions": [
         "contextMenus",
         "scripting",
-        "storage"
-    ],
-    "host_permissions": [
+        "storage",
+        "activeTab",
         "<all_urls>"
     ],
     "web_accessible_resources": [
-        {
-            "resources": [
-                "images/*.png",
-                "images/*.svg",
-                "src/hoverTools/hoverTools.html"
-            ],
-            "matches": [
-                "<all_urls>"
-            ]
-        }
+        "images/*.png",
+        "images/*.svg",
+        "src/hoverTools/hoverTools.html"
+
     ],
-    "content_security_policy": {
-        "extension_pages": "script-src 'self'; object-src 'self'"
-    }
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "browser_specific_settings": {
+            "gecko": {
+                "id": "trix@highlight"
+            }
+        }
 }

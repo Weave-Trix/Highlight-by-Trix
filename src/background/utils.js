@@ -1,24 +1,29 @@
 async function getCurrentTab() {
     const queryOptions = { active: true, lastFocusedWindow: true };
-    const [tab] = await chrome.tabs.query(queryOptions);
+    const [tab] = await browser.tabs.query(queryOptions);
     return tab;
 }
 
 async function executeInCurrentTab({ file, func, args }) {
     const tab = await getCurrentTab();
-    const executions = await chrome.scripting.executeScript({
+    const executions = await browser.scripting.executeScript({
         target: { tabId: tab.id, allFrames: true },
         ...(file && { files: [file] }),
         func,
         args,
     });
+    if (executions[0]) {
+        console.log("hihi " + executions)
+    }
 
-    if (executions.length == 1) {
+    if (executions.length == 1 && executions[0]) {
         return executions[0].result;
     }
 
     // If there are many frames, concatenate the results
-    return executions.flatMap((execution) => execution.result);
+    if (executions.length > 1) {
+        toggleHighlighterCursorFromContext
+    }
 }
 
 function wrapResponse(promise, sendResponse) {

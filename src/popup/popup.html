@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title>Highlighter</title>
+    <title>Highlight by Trix</title>
 
-    <meta name="viewport" content="width=562 height=780 initial-scale=1 maximum-scale=1">
+    <meta name="viewport" content="width=600 height=780 initial-scale=1 maximum-scale=1">
     <meta charset="utf-8">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,8 +17,10 @@
 
 <body>
     <div id="title-section">
-        <object class="highlighter-icon" data="../../images/logo.svg" type="image/svg+xml"></object>
-        <h1>Highlighter</h1>
+        <object class="highlighter-icon" data="../../images/128.png" type="image/svg+xml"></object>
+        <h1 style="margin-left: 0.8rem">Highlight</h1> 
+        <span style="font-weight: bold; margin-left: 1rem; font-size: 13px;">by</span> 
+        <span style="font-weight: bold; margin-left: 0.2rem; font-size: 1.2rem;">Trix</span>
     </div>
 
     <div id="close-button" class="material-icons">
@@ -28,7 +30,6 @@
     <div id="settings-section">
         <div id="colors-section">
             <div id="selected-color" class="color" style="background-color: #fff615;">
-                <div id="change-color-button" class="material-icons">edit</div>
             </div>
             <div id="colors-list">
                 <!-- A list of <div class="color"> elements goes here -->
@@ -39,8 +40,7 @@
             <div id="shortcut-section" title="Highlight the currently selected text using this keyboard shortcut">
                 <span>Highlight shortcut: </span>
                 <span id="shortcut-link">
-                    <span id="shortcut-link-text">Alt+H</span>
-                    <span class="material-icons">edit</span>
+                    <span id="shortcut-link-text">Alt+A</span>
                 </span>
             </div>
         </div>
@@ -67,8 +67,7 @@
 
     <!-- Modals -->
     <div id="remove-all-confirmation-modal" class="modal">
-        <p class="modal-text">Are you sure you want to delete all highlights on this page? This operation cannot be
-            undone.</p>
+        <p class="modal-text" style="margin-bottom: 4.5rem;">Delete operation cannot be undone.</p>
         <div class="modal-actions">
             <div class="modal-button modal-action-cancel" id="remove-all-cancel">Cancel</div>
             <div class="modal-button modal-action-confirm" id="remove-all-confirm">Confirm</div>

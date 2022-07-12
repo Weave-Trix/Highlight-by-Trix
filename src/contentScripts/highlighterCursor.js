@@ -10,7 +10,7 @@ function highlightOnSelection() { /* eslint-disable-line no-redeclare */
     const selectionString = selection.toString();
 
     if (selectionString) { // If there is text selected
-        chrome.runtime.sendMessage({ action: 'highlight' });
+        browser.runtime.sendMessage({ action: 'highlight' });
     }
 }
 

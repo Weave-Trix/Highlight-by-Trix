@@ -4,7 +4,7 @@
 }
 
 html {
-    width: 450px;
+    width: fit-content;
     height: 600px;
 }
 
@@ -12,8 +12,8 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    width: fit-content;
     margin: 0;
-    padding: 0;
 
     background-color: #f0f0f0;
 }
@@ -43,7 +43,6 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-
     color: #AAAAAA;
     font-size: 21px;
     cursor: pointer;
@@ -92,21 +91,6 @@ body {
     margin: 10px;
 }
 
-#change-color-button {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 28px;
-    width: 28px;
-    bottom: -12px;
-    right: -15px;
-
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: rgba(196, 196, 196, 0.23);
-}
-
 #selected-color:hover #change-color-button, #change-color-button:hover {
     background-color: rgba(196, 196, 196, 0.53);
 }
@@ -127,10 +111,10 @@ body {
     height: 40px;
     margin: 10px 0;
     padding-top: 4px;
-
+    margin-right: 1rem;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: bolder;
     background-color: #fdd33c;
     border: 0;
     border-radius: 7px;
@@ -153,7 +137,7 @@ body {
 }
 
 #shortcut-link-text {
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 #shortcut-link .material-icons {
@@ -205,8 +189,6 @@ body {
     justify-content: space-between;
     margin: 0 18px 15px 18px;
     padding: 10px 14px;
-
-    cursor: pointer;
     font-size: 14px;
     background-color: white;
     border-radius: 5px;

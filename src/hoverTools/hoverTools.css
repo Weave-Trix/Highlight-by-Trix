@@ -37,13 +37,13 @@
 }
 
 .highlighter--icon-copy {
-    background-image:url('chrome-extension://__MSG_@@extension_id__/images/file_copy.svg');
+    background-image:url('../../images/file_copy.svg');
 }
 
 .highlighter--icon-delete {
-    background-image:url('chrome-extension://__MSG_@@extension_id__/images/delete.svg');
+    background-image:url('../../images/delete.svg');
 }
 
 .highlighter--icon-change-color {
-    background-image:url('chrome-extension://__MSG_@@extension_id__/images/color_lens.svg');
+    background-image:url('../../images/color_lens.svg');
 }

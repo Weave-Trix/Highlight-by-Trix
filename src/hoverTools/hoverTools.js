@@ -8,7 +8,7 @@ let copyBtnEl = null;
 let changeColorBtnEl = null;
 let deleteBtnEl = null;
 
-$.get(chrome.runtime.getURL('src/hoverTools/hoverTools.html'), (data) => {
+$.get(browser.runtime.getURL('src/hoverTools/hoverTools.html'), (data) => {
     hoverToolEl = $(data);
     hoverToolEl.hide().appendTo('body');
     hoverToolEl[0].addEventListener('mouseenter', onHoverToolMouseEnter);
@@ -116,7 +116,7 @@ function onCopyBtnClicked() {
     const highlights = document.querySelectorAll(`.highlighter--highlighted[data-highlight-id='${highlightId}']`);
     const highlightText = Array.from(highlights).map((el) => el.textContent.replace(/\s+/ugm, ' ')).join(''); // clean up whitespace
     navigator.clipboard.writeText(highlightText);
-    chrome.runtime.sendMessage({ action: 'track-event', trackCategory: 'highlight-action', trackAction: 'copy' });
+    browser.runtime.sendMessage({ action: 'track-event', trackCategory: 'highlight-action', trackAction: 'copy' });
 }
 
 function onDeleteBtnClicked() {
@@ -137,7 +137,7 @@ function onDeleteBtnClicked() {
         el.removeEventListener('mouseleave', onHighlightMouseLeave);
     });
 
-    chrome.runtime.sendMessage({ action: 'track-event', trackCategory: 'highlight-action', trackAction: 'delete' });
+    browser.runtime.sendMessage({ action: 'track-event', trackCategory: 'highlight-action', trackAction: 'delete' });
 }
 
 
@@ -147,7 +147,7 @@ function onChangeColorBtnClicked() {
     const highlights = $(`.highlighter--highlighted[data-highlight-id='${highlightId}']`);
     const currentColor = highlights[0].style.backgroundColor;
 
-    chrome.runtime.sendMessage({ action: 'get-color-options' }, ({ response: colorOptions }) => {
+    browser.runtime.sendMessage({ action: 'get-color-options' }, ({ response: colorOptions }) => {
         const currentIndex = colorOptions.findIndex((color) => color.color === currentColor); // Find index by color rgb value
         const newColorOption = colorOptions[(currentIndex + 1) % colorOptions.length];
         const { color: newColor, textColor: newTextColor } = newColorOption;
@@ -156,6 +156,6 @@ function onChangeColorBtnClicked() {
         highlights.css('color', newTextColor || "inherit");
 
         update(highlightId, window.location.hostname + window.location.pathname, window.location.pathname, newColor, newTextColor); // update the value in the local storage
-        chrome.runtime.sendMessage({ action: 'track-event', trackCategory: 'highlight-action', trackAction: 'change-color' });
+        browser.runtime.sendMessage({ action: 'track-event', trackCategory: 'highlight-action', trackAction: 'change-color' });
     });
 }

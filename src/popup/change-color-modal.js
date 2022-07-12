@@ -39,7 +39,7 @@ function confirm(e) {
     const color = hexToRgb(data.get('highlight-color'));
     const textColor = hexToRgb(data.get('text-color'));
 
-    chrome.runtime.sendMessage({ action: 'edit-color', colorTitle, color, textColor });
+    browser.runtime.sendMessage({ action: 'edit-color', colorTitle, color, textColor });
     location.reload(); // Force a refresh of the colors list in the popup
 }
 
